@@ -1,48 +1,31 @@
-# Diagrams inside a themed deck
+# Diagrams for slides
 
-Use a diagram when relationships or ordered change explain a slide better than prose. Keep it part of the deck's visual system and editable source. The [gallery](../assets/pattern-gallery.html) contains original, self-contained process and architecture examples.
+Read when relationships or ordered change need a diagram. Keep graph data/labels editable and bind visuals to the deck theme. Optional [gallery](../assets/pattern-gallery.html): process and architecture examples.
 
-## Reference and scope
+Credit: [Cathryn Lavery's Diagram Design](https://github.com/cathrynlavery/diagram-design) informed editorial restraint, selective emphasis, semantic tokens, and inline SVG. Consulted 2026-10-16: [skill](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/SKILL.md), [style guide](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/references/style-guide.md), [connectors](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/references/primitives-core.md). This independent adaptation bundles no upstream code/artwork and requires neither its installation nor its onboarding/default skin.
 
-[Cathryn Lavery's Diagram Design](https://github.com/cathrynlavery/diagram-design) is the reference for restrained editorial diagrams, selective emphasis, semantic tokens, and inline SVG. Its [skill](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/SKILL.md), [style guide](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/references/style-guide.md), and [connector guidance](https://github.com/cathrynlavery/diagram-design/blob/main/skills/diagram-design/references/primitives-core.md) were consulted on 2026-10-16. This is an independent SleekSlide adaptation, not an installation or vendored copy of that skill. No upstream code or artwork is bundled. Its onboarding prompts and default skin are not SleekSlide requirements.
+## Choose and theme
 
-## Select a structure
+Use process for stages/outputs, architecture for components/connections, timeline for phases/dates, swimlanes for ownership/handoffs, and flowcharts for decisions/outcomes. Prefer tables for attribute comparisons. Explain one main relationship; simplify or split without silently dropping required information.
 
-| Message | Starting composition |
+| Diagram role | Theme role |
 | --- | --- |
-| Steps that produce an outcome | Process: clearly ordered stages, connecting direction, named output |
-| Components and their connections | Architecture: components grouped by real boundaries, named relationships |
-| Change across dates or phases | Timeline: a common axis with meaningful spacing or explicit equal-stage spacing |
-| Ownership and handoffs | Swimlanes: owners on one axis, stages on the other |
-| A decision changes the path | Flowchart: labeled branches and explicit outcomes |
-
-Choose one main relationship per diagram. Remove redundant elements; use a table for attribute comparisons. For slide readability, begin with a handful of nodes and split overview from detail when needed. Do not silently drop required relationships to meet a visual budget.
-
-## Bind the active theme
-
-Resolve the reference's roles to SleekSlide's current theme; do not import its tangerine color or font families:
-
-| Diagram role | SleekSlide source |
-| --- | --- |
-| Paper / container | `background` or `surface`, according to actual placement |
-| Ink / node labels | `text` |
-| Secondary labels | `textMuted` |
+| Paper / container | `background` / `surface` |
+| Labels / secondary labels | `text` / `textMuted` |
 | Decorative rules | `border` |
-| Essential connections and boundaries | A checked `textMuted`, `controlBorder`, or `primaryText` pairing |
-| Focal fill / foreground | `primary` / `onPrimary` |
-| Soft focal fill / foreground | `primarySoft` / checked `primaryText` or `text` |
-| Fonts | Existing heading, body, and optional technical-label font roles |
+| Essential connections/boundaries | Checked `controlBorder`, `textMuted`, or `primaryText` |
+| Focal fill/text | `primary` / `onPrimary` |
+| Soft emphasis | `primarySoft` / checked foreground |
+| Typography | Existing heading/body/technical roles |
 
-Emphasize the central node or path; most elements can remain neutral. Distinguish relationship types with labels or dash patterns as well as color. Apply the contrast checks in [design-system.md](design-system.md) to the actual SVG background. Include markers and label backings when changing themes. The gallery's color control regenerates a small monochromatic demo palette; custom deck palettes can supply the same role names directly.
+Emphasize the central node/path, leaving most elements neutral. Use labels or dash patterns as well as color. Apply [contrast checks](design-system.md#measure-contrast), including markers and label backings. Preserve custom theme colors/fonts rather than adopting the reference's palette.
 
-## Author and animate
+## Render and verify
 
-Use inline SVG for precise connectors and labels; use semantic HTML for accompanying explanation and controls. Keep graph content and relationships in data where edits are offered. Define unique IDs per diagram instance for accessible titles, descriptions, markers, and masks. Give informative SVGs a title and description via `role="img"` and resolving `aria-labelledby`.
+Use inline SVG with unique per-instance title/description/marker/mask IDs. Informative SVGs need `role="img"` and resolving `aria-labelledby`; decorative SVGs may be hidden.
 
-Prefer clear horizontal/vertical routing, with bends around unrelated nodes. Separate parallel paths and attachment points so connections remain traceable. Put labels in open space, clear of strokes and nodes; use an opaque backing when needed. Draw connections before opaque nodes. Verify direction and endpoints after changing labels or layout.
+Route clear horizontal/vertical connections around unrelated nodes. Separate shared-edge attachment points and parallel paths. Keep labels clear of strokes/nodes, adding opaque backing where needed. Draw connections before opaque nodes; verify endpoints/direction after edits.
 
-Use slide-level type roles at the actual rendered size. Do not copy small document-diagram font sizes into a presentation. At narrow widths, recompose the graph vertically or replace it with an equivalent labeled list; enlarging an SVG viewBox alone does not preserve readable labels.
+Use readable slide typography at actual rendered size. On narrow screens, recompose vertically or provide an equivalent labeled list. Motion should clarify real sequence/state; retain a complete static/textual equivalent and honor editing/reduced-motion behavior.
 
-Motion can reveal an actual sequence or highlight the selected path. Keep an understandable static state and a complete textual equivalent; avoid a perpetual animated flow that implies unsupported behavior. Freeze effects in editing mode and disable travel/drawing animation under reduced motion.
-
-Inspect all nodes and connector labels for clipping/overlap at target sizes. Recheck text and meaningful strokes after theme changes. If exporting a standalone SVG, resolve CSS tokens and include the needed styling and font fallback; document-scoped variables alone do not travel with an extracted SVG.
+Inspect clipping, overlap, and contrast at target sizes. Standalone SVG export must resolve document CSS tokens and include styling/font fallbacks.

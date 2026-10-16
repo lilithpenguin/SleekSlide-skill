@@ -1,37 +1,31 @@
 # Upward covering panels
 
-Use for a small set of features, process stages, or design principles that deserve separate attention within one slide. The incoming panel moves upward over the previous panel's body, leaving its keyword header exposed. The visible header remains a button for revisiting that point. This pattern is inspired by the user's GT Standard screenshot; it does not require that site's fonts, artwork, or colors.
+Use for a few features, stages, or design principles within one slide. Each incoming panel slides over the previous body, leaving its keyword header clickable above. Inspired by the user's GT Standard reference; use the deck's own theme and artwork.
 
-## Three starting templates
+Optional [gallery](../assets/pattern-gallery.html) variants:
 
-The runnable [gallery](../assets/pattern-gallery.html) includes original sample content:
+| Variant | Editable content |
+| --- | --- |
+| Features | Keyword, benefit, explanation, visual |
+| Process | Stage, action, output, sequence visual |
+| Principles | Keyword, rationale, design implication |
 
-| Variant | Content per panel | Appropriate use |
-| --- | --- | --- |
-| Features | Short keyword, benefit, explanatory text, simple visual | Product capabilities with distinct benefits |
-| Process | Stage keyword, action, output, sequence visual | A short ordered workflow |
-| Principles | Principle keyword, rationale, concrete implication | Explaining design decisions; does not supply private storytelling guidance |
+Prefer 3–4 panels, fewer for dense copy/small screens. Use simultaneous views for direct comparisons. These templates do not supply private storytelling guidance.
 
-Prefer three or four panels; choose fewer when the viewport or wording needs more room. Do not turn every slide into a stack. Contrast or parallel comparison may be clearer with both items visible together.
+## Geometry and model
 
-## Geometry and state
+Keep slide/sidebar stationary. In a stage of height `H`, rail height `R`, panel `i` settles at `i*R` with height `H-i*R`. Later panels paint above earlier ones, starting below the stage. Incoming opaque bodies cover earlier content while retaining keyword rails. Ensure the last body fits.
 
-Keep the outer slide and sidebar stationary. Within a bounded stage of height `H`, give each keyword rail height `R`. For panel index `i`, its settled top is `i * R`, and its height is `H - i * R`. Later panels paint above earlier ones and begin below the stage. When advancing, translate the next panel to its settled top. Earlier bodies remain behind the incoming opaque panel, while their rails stay visible. The last panel must still have enough room for its full content.
+Store stable point IDs, keyword/title/body/visual, and `activePanelId`; rebuild geometry after edits/reordering. Clip offstage motion only, never active content. On narrow/short screens, simplify/reflow or use a keyword selector with one body. Disclose any reading fallback instead of shrinking type excessively.
 
-Store `activePanelId` independently of slide order. Keep `id`, `keyword`, `title`, `body`, and visual data separate from geometry. Use the model to rebuild after edits or reordering. Avoid raw HTML fields for routine text. The sample gallery uses an array of plain text and original SVG; it intentionally does not implement the full deck editor.
+## Input and accessibility
 
-The stage clips moving offstage panels intentionally; verify that no active content is clipped. On short/mobile screens, reduce composition complexity and reflow the visual. If readable content cannot fit, use a keyword selector with a single active body, or disclose a reading-mode fallback. Do not reduce the whole slide to miniature type.
+- Reuse the deck bar: forward/back handles panels before slides. Return whether the panel controller consumed the action; never change both from one event.
+- Optional wheel handling belongs over the stage. Normalize delta modes, accumulate a threshold, accept one step per gesture, and require a quiet interval to reject inertia. Ignore horizontal/pinch gestures and interactive/editable fields; preserve input outside the stage.
+- Provide buttons, keyboard alternatives, touch-reachable controls, and clickable prior headers. Follow the main skill's shortcut guards.
+- Future panels are inert and hidden from assistive technology. Covered bodies are also inert/hidden; earlier keyword buttons remain available. Move focus before it becomes covered and announce the selected keyword once.
+- Clear gesture timers on leave and choose reset/resume on entry. Freeze motion while editing; expose all point fields. Reduced motion changes panels immediately without losing content or controls.
 
-## Input and deck integration
+Use approved `surface/text`, `primarySoft/text`, or `primary/onPrimary` pairs. Update rails, visuals, controls, and focus with theme changes; do not copy the reference's palette.
 
-- Reuse the deck's single previous/next bar. Forward advances the panel sequence before the next slide. Backward reverses panels before the previous slide. Expose whether the component handled the action to the parent deck controller; never advance a panel and slide from the same event.
-- Wheel input is an optional enhancement over the stage. Normalize delta modes, ignore horizontal/pinch gestures and interactive fields, accumulate a threshold, and accept one step per gesture. Require a quiet interval so trackpad inertia does not skip several panels. Avoid document-wide wheel capture. Keep normal input behavior outside the stage.
-- Provide buttons and keyboard alternatives, plus clickable earlier keyword headers. Touch users can use these controls without learning a gesture. Do not intercept space/arrows from inputs, sliders, buttons, or editable content.
-- Future panels must be inert and absent from the accessibility tree. Covered bodies must also be inert and hidden from assistive technology; their keyword buttons remain available. If focus is about to become covered, move it to the appropriate visible keyword button. Announce the selected keyword once rather than every animation frame.
-- Cancel pending gesture timers on leave, and reset gesture state on re-entry. Choose reset or resume deliberately. Freeze motion during editing and expose all panel fields in the editor. Under reduced motion, change panels immediately while retaining the same controls and all content.
-
-## Theme and validation
-
-Map panel backgrounds and foregrounds to approved theme role pairs: `surface/text`, `primarySoft/text`, and optionally `primary/onPrimary`. Supporting colors may distinguish chapters, but the reference's blue/pink/yellow scheme is not the default. Keyword rails, SVG fills, arrowheads, focus indicators, and controls must respond to the same theme change.
-
-Check the first, intermediate, and final state; forward/backward movement; header revisits; a sustained wheel gesture; repeated fast input; reduced motion; focus after covering; and the longest editable copy at desktop, shorter laptop, and mobile sizes. Integration into a full deck additionally needs the boundary handoff and editor/persistence checks from SKILL.md.
+Check first/middle/last states, forward/back, header revisits, sustained wheel gestures, rapid input, reduced motion, focus, and longest copy at desktop/laptop/mobile sizes. Full-deck integration also needs boundary handoff and edit/save/export verification. The gallery is a component reference, not a complete deck editor.

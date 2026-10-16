@@ -1,62 +1,36 @@
-# Adaptable interaction patterns
+# Interaction choices
 
-Read when choosing motion, evaluating a reference, or implementing an effect. Use the smallest technique that supports the content. These are options, not a checklist to include in every deck.
+Read for counters, live controls, or specialized effects. Choose effects that explain content; this is not a checklist.
 
-## Reference findings
+| Effect | Implementation / invariant |
+| --- | --- |
+| Entrance | CSS/Web Animations; GSAP for coordinated sequences. Animate containers so text edits remain robust. |
+| Covering panels | Bounded state + transforms; see [stacked panels](stacked-panels.md). |
+| Numeric change | GSAP or requestAnimationFrame over numeric state; separate units, precision, target, and timing. |
+| Chart/process reveal | Data-driven HTML/SVG; keep labels/evidence editable. See [diagrams](diagrams.md). |
+| Product setting | Labeled native range/button, bounded state, meaningful presets; label hypothetical results. |
+| Before/after | Toggle or labeled range; retain both views and keyboard access. |
+| Word/line reveal | Split only when needed; re-split after edits/fonts/layout changes, not every frame. |
+| Scramble | Decorative clone; preserve correct semantic text and reduced-motion fallback. |
+| Font morph | Verify actual axes/ranges; prefer standard font properties. Avoid reflowing body text or faking width by stretching it. |
+| Looping illustration | Optional supplied/authored Lottie; pause offscreen and keep primary metrics separate. |
 
-Inspected on 2026-10-16:
+## Numeric and live state
 
-- [GT Mechanik](https://gt-mechanik.com/) combines Tailwind CSS, GSAP/ScrollTrigger, SplitText/ScrambleText, SVG-rendered Lottie illustrations, and custom variable-font interaction. Its scroll-linked paper reveals and mechanical art are more specialized than ordinary presentation transitions. Evidence: [public JavaScript](https://gt-mechanik.com/assets/index-BloRPNPN.js), [stylesheet](https://gt-mechanik.com/assets/index-vzwSAYox.css).
-- [GT Standard](https://gt-standard.com/) combines Tailwind CSS, GSAP/ScrollTrigger, SVG-rendered Lottie, and CSS variables controlling variable-font axes. Its live font sliders, state toggles, active chapter navigation, and panel transitions are useful interaction references. Some Lottie frames are linked to scroll progress; animation JSON is embedded in the inspected JavaScript bundle. Evidence: [public JavaScript](https://gt-standard.com/source.41b3788d.js), [stylesheet](https://gt-standard.com/source.90a60e7d.css).
+Interpolate numbers, then format for locale/units. Support descending/decimal values, clamp ranges, and set exact final values. Keep accessible final text without announcing every frame. Cancel an existing tween before starting another. Graphs and metrics share state; editing updates model/final preview without launching presentation loops.
 
-Treat these as dated implementation observations. Hashed asset URLs can change; inspect the current HTML before relying on them for fresh research. Borrow interaction principles with original content and visuals. These sites are inspiration, not runtime dependencies or a source of bundled proprietary fonts/artwork.
+Controls should explain a real setting or clearly labeled scenario. Do not invent capabilities or a business model to justify a slider. Font effects depend on the chosen font, not vice versa; inspect axes such as `wght`, `wdth`, `opsz`, and `slnt` before using them.
 
-## Select effects
+## Sequencing
 
-| Effect | Preferred technique | Editing implications |
-| --- | --- | --- |
-| Contents/sidebar progress | Semantic links/buttons, a single active-slide state, CSS transition | Generate labels and order from the content model |
-| Slide or section entrance | CSS/Web Animations for a simple move/fade; GSAP for coordinated sequences | Apply to a container so text edits do not break timing |
-| Upward covering panels with keyword headers | Bounded panel state and CSS transforms; see [stacked panels](stacked-panels.md) | Keep stable point IDs, keyword, body, and visual as data; reuse the deck controls |
-| Count-up metric | A numeric state interpolated by GSAP or a small requestAnimationFrame loop | Keep target, units, precision, and timing as separate fields |
-| Chart or process reveal | Native SVG/HTML with data-driven drawing and short transitions | Keep the evidence and labels editable |
-| Product slider/toggle | Native range input or button updating a bounded state model | Expose presets/default values; label illustrative outcomes |
-| Before/after comparison | Toggle states or a labeled range-controlled reveal | Keep both views in source and support keyboard input |
-| Word/line reveal | Animate semantic containers; split text only when justified | Re-split after edits or font/layout changes, not on every frame |
-| Scramble title | Optional short effect on a decorative text clone | Keep the correct semantic title stable; use the original under reduced motion |
-| Variable-font morph | CSS font properties/axes driven by GSAP or direct input | Inspect available axes/ranges; contain layout changes and verify fallback |
-| Looping product illustration | Lottie with an appropriate supplied/authored asset | Easy to integrate, potentially costly to redesign; keep primary metrics separate |
+Useful starting durations: 200–600 ms for moves; 800–1400 ms for counters. Adapt to content and presenter pacing. Provide enter/leave, next reveal, replay, and reduced-motion states as needed. Avoid multiple controllers animating one property.
 
-Default to HTML/CSS/JavaScript plus GSAP core when rich sequencing warrants it. Tailwind is a styling option, not an interaction engine. Preserve it when already in the project rather than adding it solely to match a reference's stack.
+Use the deck's active-slide state; IntersectionObserver only when it matches navigation. Do not add document scrolling just to trigger effects. Lazy-load optional assets and supply static fallbacks; bundle dependencies for promised offline output. Tailwind is optional styling, not a motion engine.
 
-The optional [pattern gallery](../assets/pattern-gallery.html) contains three covering-panel variants and two theme-aware SVG examples. Inspect only the relevant implementation when needed. Read [diagram guidance](diagrams.md) when a slide benefits from a process or relationship diagram. Adapt content and tokens; the gallery is a component reference, not a complete deck editor.
+Long pinned sequences, mouse-follow effects, custom cursors, continuous scrambling, WebGL, and bespoke Lottie need a clear reason. The optional [gallery](../assets/pattern-gallery.html) provides implementation examples; inspect only the selected pattern.
 
-## Numeric changes
+## Inspiration and documentation
 
-Interpolate actual numbers, then format for display. Do not count by repeatedly parsing a string containing currency signs, separators, or units. Clamp to the intended range, handle descending and decimal values, and set the exact final value on completion. Use a formatting function appropriate to the requested locale and units. Keep the textual final value accessible without announcing every intermediate frame.
+[GT Mechanik](https://gt-mechanik.com/) and [GT Standard](https://gt-standard.com/), inspected 2026-10-16, informed paper/panel reveals, live controls, variable-type effects, and chapter navigation. Their observed GSAP/Lottie/Tailwind implementations are dated references, not dependencies. Reinspect for fresh technical research; use original visuals and legitimate fonts.
 
-Kill the previous tween before starting another on the same target. Changing an editor value updates the model and final preview immediately; it should not create a new running presentation loop. Link a graph and displayed metric to the same state so they cannot disagree.
-
-## Live controls and typography
-
-GT Standard's direct manipulation is particularly transferable: moving a labeled slider changes a visible result immediately. For a product deck, map that pattern to a meaningful product setting, comparison, or an explicitly labeled hypothetical scenario. Do not fabricate a business model merely to justify an interactive slider.
-
-Variable-font axes belong to specific fonts. Inspect their supported ranges before using `wght`, `wdth`, `opsz`, `slnt`, or custom axes. Prefer high-level CSS font properties for standard axes when they suffice. Animate a decorative heading rather than body copy if changing glyph width causes distracting reflow. Do not fake a missing width axis by stretching important body text.
-
-## Timing and portability
-
-Short movements commonly fit within 200–600 ms; allow around 800–1400 ms for a count-up when legibility benefits. These are starting points, not fixed rules. Match the content, reference, and presenter pacing.
-
-Keep one scene's sequencing controllable through enter, leave, reveal-next, replay, and reduced-motion states as applicable. Use a scene controller or an IntersectionObserver only when it corresponds to the navigation model. Avoid adding continuous document scroll just to trigger a slide effect.
-
-Lazy-load optional animation assets and pause them when inactive. Do not embed a large illustration library in the initial JavaScript simply because the reference did so. Prefer static final-state fallbacks if optional animation fails to load. Portable/offline exports must bundle the dependencies they claim to support.
-
-Useful primary documentation:
-
-- [GSAP tweens and timelines](https://gsap.com/docs/v3/GSAP/)
-- [Web Animations API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API)
-- [Variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts/Variable_fonts)
-
-## Effects requiring a specific reason
-
-Long pinned scroll choreography, mouse-following content, constant text scrambling, custom cursors, WebGL scenes, and complex bespoke Lottie artwork are not the baseline for an editable deck. Use them when requested or when a clear explanatory benefit justifies the additional authoring, mobile adaptation, and maintenance. A normal product deck does not require them to feel responsive.
+Docs: [GSAP](https://gsap.com/docs/v3/GSAP/), [Web Animations](https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API), [variable fonts](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Fonts/Variable_fonts).

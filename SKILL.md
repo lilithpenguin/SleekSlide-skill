@@ -1,6 +1,6 @@
 ---
 name: sleekslide
-description: "Create or edit interactive HTML presentation decks with a contents sidebar, one screen per slide, reusable motion, and an editing mode for routine content changes. Use for browser-based pitch decks, product presentations, and animated HTML slides. Keep ordinary websites, native Figma decks, PPTX authoring, and video production in their own workflows."
+description: "Plan, create, or edit interactive HTML presentation decks with a contents sidebar, one screen per slide, reusable motion, and an editing mode for routine content changes. Use for browser-based pitch decks, product presentations, and animated HTML slides. Keep ordinary websites, native Figma decks, PPTX authoring, and video production in their own workflows."
 ---
 
 # SleekSlide
@@ -15,7 +15,13 @@ Fonts and colors are optional inputs, not prerequisites. In order of preference,
 
 Centralize typography, spacing, and named color roles in one theme configuration and CSS custom properties. Include background, foreground, muted text, accent, border, and inverse colors. Provide a font fallback stack and verify actual font loading and language coverage before measuring layouts. Use legitimately supplied or available fonts. Variable-font effects are optional and depend on the selected font's actual axes; they must not dictate the font choice. Theme changes should not require editing each slide.
 
-Explain the chosen direction briefly and proceed when the brief is sufficient. Do not ask for approval on routine font, color, or implementation choices.
+## Plan before building
+
+Before writing presentation code for a new deck or substantially restructuring an existing deck, share a numbered text rundown covering every slide, including the cover. Describe each slide's main message and source content, its composition in plain spatial terms, and the interaction to use and why it helps. State explicitly when a slide only needs a simple reveal or no animation. Include relevant editable values and distinguish illustrative examples from real product behavior or evidence.
+
+Keep the rundown concise enough to review: usually two to four sentences per slide, with content and interaction clearly identifiable. Summarize the intended theme and navigation once rather than repeating them for every slide. Identify material assumptions or missing sources. Do not replace this step with a generic implementation checklist or keep the plan only in private reasoning.
+
+Share the rundown before moving into implementation. Then proceed within the authorized scope unless the user requested a plan-only response or a chance to review or approve it first. Do not add a routine approval gate. For a bounded edit, state the affected slides or shared controls and the intended change; a full deck plan is unnecessary.
 
 ## Choose a small technical foundation
 
@@ -31,7 +37,8 @@ Use applicable installed presentation and website/hosting skills for their speci
 
 - Keep the presentation stage within the available viewport beside the sidebar, with one slide visible and no internal vertical scrolling at the intended desktop presentation sizes. Use dynamic viewport units where appropriate and reserve space for navigation controls.
 - Use responsive layout and bounded type sizes. Inspect long content and short laptop viewports. If content overflows, improve composition or shorten it with the user's meaning intact. Do not conceal content with clipping or shrink the entire slide until text becomes unreadable. Add slides only when the requested count permits it.
-- Give slides stable IDs independent of order. Generate the contents sidebar, active-slide marker, progress, and slide number from the same slide model. Keep URL links and browser back/forward synchronized without replay loops.
+- Give slides stable IDs independent of order. Generate the contents sidebar and any active markers, progress indicators, or counters from the same slide model. Keep URL links and browser back/forward synchronized without replay loops.
+- Use one presentation control bar alongside the contents sidebar. Combine previous/next, replay, editing, fullscreen, and the mobile contents toggle there as applicable. Do not create separate top and bottom bars for the same navigation. Keep titles, section labels, brand identity, and active-slide context in the sidebar rather than repeating them in the control bar. Add a progress or count display only when it contributes information that the sidebar does not already convey.
 - Provide previous/next buttons and keyboard navigation. Arrow and space shortcuts must not steal input from text fields, sliders, editable regions, dialogs, or the editor. If a slide has staged reveals, finish its intended sequence before advancing.
 - On small screens, collapse the contents sidebar and recompose the slide. Preserve readable content and reachable controls. Explicitly explain any mobile reading/scrolling fallback if full-screen fit cannot coexist with the required content; do not silently crop or make text tiny.
 

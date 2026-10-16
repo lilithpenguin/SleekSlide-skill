@@ -1,36 +1,57 @@
 # SleekSlide
 
-A Codex skill for creating editable, interactive HTML presentation decks.
+SleekSlide is a Codex skill for turning a brief, existing content, or a webpage into a polished, editable HTML presentation. It starts with a slide-by-slide content and interaction plan, then builds a deck that fits one slide to each screen.
 
-SleekSlide guides the creation of browser-based presentations with a contents sidebar, one screen per slide, animated metrics, and an editing mode for routine content changes. It favors HTML, CSS, and JavaScript, with GSAP when coordinated motion is useful.
+A contents sidebar keeps the story easy to navigate. One presentation bar holds the controls. An in-page editor lets you update text, metric values, images, and slide order without touching the source code. Animations and interactive examples are chosen to explain the content, with quieter treatment where the message speaks for itself.
 
-## Use
+Fonts and colors can follow your brand or be chosen for the project. The technical foundation stays small: HTML, CSS, and JavaScript, with GSAP when coordinated motion is useful.
 
-Install this repository as a skill named `sleekslide` in your Codex skills directory. For a new installation using the default directory:
+## What the skill does
+
+- Shares a numbered rundown of each slide's content and interactions before implementation.
+- Builds responsive, single-screen slides with a contents sidebar and one set of presentation controls.
+- Adds useful counters, chart reveals, sliders, toggles, or product examples where appropriate.
+- Includes an editing mode for routine content changes and slide organization.
+- Distinguishes browser-local drafts, downloadable HTML, and hosted updates.
+- Supports keyboard navigation and reduced-motion preferences.
+
+## Install
+
+For a new installation in the default Codex skills directory:
 
 ```sh
 git clone https://github.com/lilithpenguin/SleekSlide-skill.git ~/.codex/skills/sleekslide
 ```
 
-Then request a deck:
+If you use a custom Codex home directory, install the skill under its `skills/sleekslide` directory instead.
 
-> Use $sleekslide to create an editable 10-slide product deck about [topic], with a contents sidebar, animated metrics, and one interactive product demonstration.
+## Use
 
-Provide the audience, content, and any required slide count. Fonts and colors are optional: supply brand guidelines or let the skill choose a suitable theme.
+Start with a topic, document, or webpage. Include the audience and any required slide count or brand guidelines.
 
-## What it covers
+> Use $sleekslide to turn https://example.com into a nine-slide product presentation. First share the content and interaction rundown for each slide. Keep the existing branding and include one interactive product example.
 
-- Responsive slide layouts, sidebar navigation, keyboard controls, and reusable motion.
-- Editable text and numeric values, with clear saving and export behavior.
-- Live sliders and toggles when they help explain the product.
-- Accessible final states and reduced-motion behavior.
-- Hosting and password-protection considerations when sharing is requested.
+If you want to review the plan before implementation, add:
 
-This repository contains authoring instructions, not a presentation runtime. Individual decks receive their own source and dependencies. Native Figma decks, PowerPoint authoring, and video production use separate workflows.
+> Stop after the rundown so I can review it before you build.
 
-## Skill files
+You can also request changes to an existing HTML deck:
 
-- [SKILL.md](SKILL.md): scope, workflow, and validation requirements.
+> Use $sleekslide to simplify this deck's navigation and add an editable number counter to slide 4.
+
+## Editing and sharing
+
+Generated decks can include an editor for changing content and downloading an updated copy. A browser draft stays in that browser; publishing changes to a hosted deck requires a supported hosting workflow.
+
+If a deck needs password protection, access controls belong on its host or server. The skill includes guidance for that setup; a password embedded in downloadable page code does not protect private content.
+
+## Scope
+
+This repository contains reusable authoring instructions and supporting references. Each generated deck receives its own presentation source and dependencies. Native Figma decks, PowerPoint authoring, and video production use separate workflows.
+
+## Files
+
+- [SKILL.md](SKILL.md): planning, authoring, editing, and validation guidance.
 - [Interaction patterns](references/interaction-patterns.md): adaptable effects and implementation choices.
 - [Editing and sharing](references/editing-and-sharing.md): persistence, export, and access controls.
 - [Codex interface metadata](agents/openai.yaml): display name and example invocation.

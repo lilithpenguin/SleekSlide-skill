@@ -9,6 +9,7 @@ Fonts and colors can follow your brand or be chosen for the project. The technic
 ## What the skill does
 
 - Shares a numbered rundown of each slide's content and interactions before implementation.
+- Derives a coordinated palette from an optional primary color and defines a reusable type hierarchy, with checked contrast pairings.
 - Builds responsive, single-screen slides with a contents sidebar and one set of presentation controls.
 - Adds useful counters, chart reveals, sliders, toggles, or product examples where appropriate.
 - Includes an editing mode for routine content changes and slide organization.
@@ -39,6 +40,14 @@ You can also request changes to an existing HTML deck:
 
 > Use $sleekslide to simplify this deck's navigation and add an editable number counter to slide 4.
 
+## Color and typography
+
+Supply a primary color to use as the theme seed. SleekSlide can derive supporting tints, neutrals, and an optional accent using a monochromatic, analogous, or complementary direction. It preserves the supplied primary and checks the text/background pairs used in the deck.
+
+The plan includes palette roles, actual color values, and a type hierarchy with font families, sizes, weights, and line heights. Existing brand guidelines take precedence. Personal brand presets can stay in a separate private companion skill.
+
+> Use $sleekslide to create a product deck with #6750A4 as the primary color. Generate a restrained analogous palette and a clear type hierarchy. Include the theme specification in the slide plan before building.
+
 ## Editing and sharing
 
 Generated decks can include an editor for changing content and downloading an updated copy. A browser draft stays in that browser; publishing changes to a hosted deck requires a supported hosting workflow.
@@ -53,5 +62,6 @@ This repository contains reusable authoring instructions and supporting referenc
 
 - [SKILL.md](SKILL.md): planning, authoring, editing, and validation guidance.
 - [Interaction patterns](references/interaction-patterns.md): adaptable effects and implementation choices.
+- [Design system guidance](references/design-system.md): palette generation, contrast checks, and type hierarchy.
 - [Editing and sharing](references/editing-and-sharing.md): persistence, export, and access controls.
 - [Codex interface metadata](agents/openai.yaml): display name and example invocation.

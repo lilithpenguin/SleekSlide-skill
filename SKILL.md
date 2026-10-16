@@ -15,11 +15,15 @@ Fonts and colors are optional inputs, not prerequisites. In order of preference,
 
 Centralize typography, spacing, and named color roles in one theme configuration and CSS custom properties. Include background, foreground, muted text, accent, border, and inverse colors. Provide a font fallback stack and verify actual font loading and language coverage before measuring layouts. Use legitimately supplied or available fonts. Variable-font effects are optional and depend on the selected font's actual axes; they must not dictate the font choice. Theme changes should not require editing each slide.
 
+When creating a theme, generating a palette from a primary color, or defining a type hierarchy, read [design system guidance](references/design-system.md). A supplied primary color is a seed to preserve; derive supporting colors and measured contrast pairs around it. Choose a limited, named type scale with explicit size, weight, and line-height roles. Existing brand systems take precedence over generated defaults. Keep personal brand presets and private preferences outside this public skill's repository.
+
 ## Plan before building
 
 Before writing presentation code for a new deck or substantially restructuring an existing deck, share a numbered text rundown covering every slide, including the cover. Describe each slide's main message and source content, its composition in plain spatial terms, and the interaction to use and why it helps. State explicitly when a slide only needs a simple reveal or no animation. Include relevant editable values and distinguish illustrative examples from real product behavior or evidence.
 
 Keep the rundown concise enough to review: usually two to four sentences per slide, with content and interaction clearly identifiable. Summarize the intended theme and navigation once rather than repeating them for every slide. Identify material assumptions or missing sources. Do not replace this step with a generic implementation checklist or keep the plan only in private reasoning.
+
+For a new or substantially changed visual system, include a compact theme specification with the plan: seed color, palette roles and actual values, harmony rationale, intended text/background contrast pairs, font families, and type hierarchy. Specify the reference slide size for typography. This can be brief; do not turn a small deck request into a separate design-system project.
 
 Share the rundown before moving into implementation. Then proceed within the authorized scope unless the user requested a plan-only response or a chance to review or approve it first. Do not add a routine approval gate. For a bounded edit, state the affected slides or shared controls and the intended change; a full deck plan is unnecessary.
 
@@ -65,5 +69,7 @@ Manage active-slide animation lifecycles: stop outgoing timelines, cancel stale 
 Use browser tooling available in the environment to inspect representative slides at a normal desktop size, a shorter laptop viewport, and a mobile size. Report concrete verification limits when tooling is unavailable. Check the longest slide and every distinct layout for readable fit, not just the cover.
 
 Exercise navigation, staged sequences, URL/back behavior, and controls. Edit a heading and numeric target, reorder a slide, reload a saved draft, and reopen an exported result to verify persistence and continued editability. Check final counter values, fast slide switching, reduced-motion behavior, and any image/font dependencies. When access control is requested, verify denied access for the deck data and assets as well as the visible page.
+
+Check the theme's actual foreground/background pairs and rendered type hierarchy, including captions and controls. Recheck affected pairs after a theme change. Color harmony alone does not establish legibility, and a passing contrast measurement alone does not establish overall accessibility.
 
 Deliver the usable result and editable source in the requested format, with a concise explanation of editing and saving. State which sharing/access features actually exist. Preserve project conventions for existing work. Skill creation alone does not require making or deploying an example deck.

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SleekSlide"
+  short_description: "Editable slides with navigation and purposeful motion"
+  default_prompt: "Use $sleekslide to create an editable HTML deck with a contents sidebar, one screen per slide, and purposeful animation. Use my brand guidelines if provided, otherwise choose a suitable theme."

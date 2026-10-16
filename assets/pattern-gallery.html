@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SleekSlide · Pattern gallery</title>
+<style>
+:root{font-family:Arial,Helvetica,sans-serif;color:var(--text);background:var(--background);--primary:#6750a4;--onPrimary:#fff;--primaryText:#6750a4;--primarySoft:#e7e3f1;--background:#faf9fc;--surface:#fff;--text:#19181c;--textMuted:#55525b;--border:#d9d6df;--controlBorder:#55525b;--focus:#6750a4;--rail:clamp(48px,8vh,68px)}
+*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,select{cursor:pointer}button{border:1px solid var(--controlBorder);border-radius:6px;background:var(--surface);color:var(--text);padding:10px 16px}button:disabled{opacity:.45;cursor:default}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:3px}button:hover:not(:disabled){background:var(--primarySoft)}
+.shell{height:100dvh;display:grid;grid-template-columns:236px minmax(0,1fr);gap:24px;padding:24px}.sidebar{display:flex;flex-direction:column;gap:20px;min-width:0}.wordmark{font-size:24px;font-weight:700;letter-spacing:-.8px}.eyebrow{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--textMuted)}h1{font-size:32px;line-height:1.05;letter-spacing:-1px;margin:6px 0 0}p{line-height:1.45}.sidebar p{font-size:15px;color:var(--textMuted);margin:0}.field{display:grid;gap:8px;font-size:14px}.field select,.field input[type=text]{width:100%;border:1px solid var(--controlBorder);border-radius:5px;padding:9px;background:var(--surface);color:var(--text)}.check{font-size:13px;display:flex;gap:8px;align-items:center}.swatches{display:flex;gap:6px}.swatch{height:28px;flex:1;border:1px solid var(--border);border-radius:4px}.note{margin-top:auto!important;font-size:12px!important}.main{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:16px}.stage{min-height:0;position:relative;overflow:hidden;border:1px solid var(--border);border-radius:12px;background:var(--surface);isolation:isolate;touch-action:pan-y}.panel{position:absolute;inset:0 0 auto;transition:transform 440ms cubic-bezier(.22,.8,.25,1);will-change:transform;border-top:1px solid var(--border)}.panel:first-child{border:0}.keyword{width:100%;height:var(--rail);display:flex;justify-content:space-between;align-items:center;border:0;border-radius:0;background:transparent!important;color:inherit;padding:0 28px;text-align:left;font-size:clamp(24px,3vw,44px);font-weight:700;letter-spacing:-1px}.keyword small{font-size:13px;letter-spacing:0;font-weight:400}.panel-body{height:calc(100% - var(--rail));padding:20px 32px 28px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:28px}.copy{max-width:440px}.copy h2{font-size:clamp(25px,3.5vw,48px);line-height:1.06;letter-spacing:-1.5px;margin:0 0 18px}.copy p{font-size:clamp(16px,1.65vw,22px);margin:0}.copy .detail{font-size:14px;margin-top:20px}.visual{display:grid;place-items:center;min-width:0}.visual svg{width:100%;max-height:290px;overflow:visible}.big-number{font-size:128px;letter-spacing:-8px;font-weight:700;line-height:1}.figure-caption{font-size:14px;margin-top:14px}.footer{display:flex;align-items:center;gap:10px;min-height:42px}.footer .hint{font-size:13px;color:var(--textMuted);margin-left:auto}.footer button:last-of-type{background:var(--primary);color:var(--onPrimary);border-color:var(--primary)}
+.diagram-page{position:absolute;inset:0;padding:clamp(22px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:20px}.diagram-page h2{font-size:clamp(30px,4vw,54px);line-height:1.05;letter-spacing:-1.6px;margin:0}.diagram-page>p{font-size:18px;max-width:650px;margin:0}.diagram-wide{width:100%;max-height:320px}.diagram-mobile{display:none;margin:0;padding-left:24px;font-size:20px}.diagram-mobile li{padding:12px 0}.diagram-mobile small{display:block;font-size:16px;color:var(--textMuted)}svg{font-family:inherit}svg .node{fill:var(--surface);stroke:var(--controlBorder);stroke-width:1.5}svg .focal{fill:var(--primary);stroke:var(--primary)}svg .label{fill:var(--text);font-size:22px;font-weight:600}svg .sub{fill:var(--textMuted);font-size:16px}svg .on{fill:var(--onPrimary)}svg .connector{fill:none;stroke:var(--primaryText);stroke-width:2}svg .arrow{fill:var(--primaryText)}svg .tint{fill:var(--primarySoft)}.sr-only{position:absolute;top:0;left:0;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:900px){.shell{grid-template-columns:190px minmax(0,1fr);padding:16px;gap:16px}.panel-body{grid-template-columns:1fr;gap:12px;align-content:center;padding:16px 24px}.visual{display:none}.copy{max-width:100%}.copy h2{font-size:32px}.copy p{font-size:18px}.diagram-wide{display:none}.diagram-mobile{display:block}.diagram-page{gap:12px}.diagram-page>p{font-size:16px}.diagram-page h2{font-size:32px}}
+@media(max-width:600px){:root{--rail:48px}.shell{padding:12px;gap:12px;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr)}.sidebar{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px}.wordmark{font-size:20px}.sidebar h1,.sidebar>p,.eyebrow,.swatches,.note,.check{display:none}.field{font-size:12px;gap:4px}.field select,.field input[type=text]{padding:7px}.main{gap:10px}.keyword{font-size:27px;padding:0 18px}.keyword small{font-size:12px}.panel-body{padding:12px 18px;align-content:start}.copy h2{font-size:28px;letter-spacing:-.8px;margin-bottom:12px}.copy p{font-size:17px;line-height:1.4}.copy .detail{font-size:13px;margin-top:14px}.footer .hint{display:none}.footer button{flex:1;padding:9px}.diagram-page{padding:20px}.diagram-page h2{font-size:30px}.diagram-mobile{font-size:18px}.diagram-mobile li{padding:9px 0}.diagram-mobile small{font-size:14px}}
+/* Short windows use a disclosed reading fallback; ordinary target sizes fit. */
+@media(max-height:560px){.shell{min-height:650px;height:auto}.main{min-height:600px}.sidebar .note::after{content:' Short-window reading mode: page scrolling is enabled.'}}
+@media(prefers-reduced-motion:reduce){.panel{transition:none}}
+</style>
+<div class="shell">
+ <aside class="sidebar">
+  <div class="wordmark">SleekSlide</div>
+  <div><div class="eyebrow">Reusable patterns</div><h1>A point at<br>a time.</h1></div>
+  <p>Move up through the story. Earlier keywords remain in view.</p>
+  <label class="field">Example<select id="example"><option value="features">Stack · Features</option><option value="process">Stack · Process</option><option value="principles">Stack · Principles</option><option value="flow">Diagram · Process</option><option value="architecture">Diagram · Architecture</option></select></label>
+  <label class="field">Primary color<input id="seed" type="text" value="#6750A4" pattern="#[0-9a-fA-F]{6}" maxlength="7" spellcheck="false" aria-describedby="color-note"></label>
+  <div class="swatches" aria-hidden="true"><span class="swatch" style="background:var(--primary)"></span><span class="swatch" style="background:var(--primarySoft)"></span><span class="swatch" style="background:var(--background)"></span></div>
+  <p id="color-note">Use a six-digit hex color. All examples share these theme tokens.</p>
+  <label class="check"><input id="wheel" type="checkbox" checked> Scroll over panels to advance</label>
+  <p class="note">Original sample content. Component examples; routine editing and saving belong to the parent deck.</p>
+ </aside>
+ <main class="main">
+  <section id="stage" class="stage" aria-label="Pattern preview"></section>
+  <nav class="footer" aria-label="Preview controls"><button id="previous">← Back</button><button id="replay">Replay</button><button id="next">Next ↑</button><span class="hint">Scroll, use ← →, or select an earlier keyword.</span></nav>
+ </main>
+</div>
+<div id="status" class="sr-only" role="status" aria-live="polite"></div>
+<noscript>This interactive gallery requires JavaScript. The accompanying Markdown references describe each template.</noscript>
+<script>
+// Original reference implementation. Adapt the model and controller into a deck;
+// do not create another navigation bar when integrating it.
+const templates={
+ features:[
+  {id:'focus',keyword:'Focus',title:'Make room for the important.',body:'Give your highest priority a clear place before the small tasks fill the day.',detail:'Feature template · One benefit and one visual per panel.',visual:'focus'},
+  {id:'clarity',keyword:'Clarity',title:'See the shape of the day.',body:'Bring scattered commitments into a single view so the next decision feels simpler.',detail:'Earlier keywords remain available above this panel.',visual:'clarity'},
+  {id:'momentum',keyword:'Momentum',title:'Move forward with intention.',body:'Turn the next useful action into a visible commitment. Keep the plan small enough to follow.',detail:'Illustrative product story; no performance claims.',visual:'momentum'}
+ ],
+ process:[
+  {id:'discover',keyword:'Discover',title:'Start with the real question.',body:'Collect the user need, the constraints, and the evidence. Agree on the problem to solve.',detail:'Output · A focused brief.',visual:'focus'},
+  {id:'shape',keyword:'Shape',title:'Make the idea tangible.',body:'Explore a small set of directions. Use a prototype to expose assumptions and tradeoffs.',detail:'Output · A testable direction.',visual:'clarity'},
+  {id:'learn',keyword:'Learn',title:'Use evidence to choose.',body:'Observe the prototype in use. Keep what helps, revise what gets in the way, and name the next question.',detail:'Output · A decision and a next step.',visual:'momentum'}
+ ],
+ principles:[
+  {id:'hierarchy',keyword:'Hierarchy',title:'Lead with one clear idea.',body:'Let size, position, and spacing guide attention. Supporting detail follows the main message.',detail:'Design implication · One dominant focal point.',visual:'focus'},
+  {id:'rhythm',keyword:'Rhythm',title:'Make repetition useful.',body:'Repeat meaningful structures so people recognize what belongs together and notice what changes.',detail:'Design implication · Shared spacing and type roles.',visual:'clarity'},
+  {id:'restraint',keyword:'Restraint',title:'Give emphasis a purpose.',body:'Use contrast and motion where they explain a choice. Leave enough quiet space for the point to land.',detail:'Design implication · Selective color and motion.',visual:'momentum'}
+ ]};
+const stage=document.querySelector('#stage'),status=document.querySelector('#status');
+const prev=document.querySelector('#previous'),next=document.querySelector('#next'),replay=document.querySelector('#replay');
+let mode='features',active=0,panels=[],gestureTotal=0,gestureUsed=false,gestureTimer;
+function resetGesture(){clearTimeout(gestureTimer);gestureTotal=0;gestureUsed=false}
+function svgVisual(kind){
+ const art={focus:'<rect x="35" y="48" width="260" height="50" rx="8" fill="currentColor"/><rect x="35" y="118" width="180" height="30" rx="6" fill="currentColor" opacity=".22"/><rect x="35" y="168" width="220" height="30" rx="6" fill="currentColor" opacity=".22"/>',clarity:'<rect x="30" y="40" width="280" height="180" rx="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M30 88H310M120 88V220M215 88V220" fill="none" stroke="currentColor" stroke-width="2"/><rect x="42" y="106" width="66" height="72" rx="6" fill="currentColor"/><rect x="132" y="153" width="71" height="54" rx="6" fill="currentColor" opacity=".22"/>',momentum:'<path d="M30 210H310" stroke="currentColor" stroke-width="3"/><rect x="55" y="150" width="48" height="60" rx="5" fill="currentColor" opacity=".25"/><rect x="147" y="102" width="48" height="108" rx="5" fill="currentColor" opacity=".5"/><rect x="239" y="48" width="48" height="162" rx="5" fill="currentColor"/>'};
+ return '<svg viewBox="0 0 340 260" aria-hidden="true">'+art[kind]+'</svg>';
+}
+function setPanel(value,announce=true){
+ const target=Math.max(0,Math.min(panels.length-1,value));
+ // If focus would become covered (e.g. interactive body), preserve a visible target.
+ const focusedBody=document.activeElement?.closest('.panel-body');
+ const moveFocus=focusedBody&&focusedBody!==panels[target]?.querySelector('.panel-body');
+ active=target;layout();
+ if(moveFocus)panels[target].querySelector('button').focus();
+ if(announce)status.textContent=templates[mode][active].keyword;
+}
+function layout(){
+ const height=stage.clientHeight,rail=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--rail'));
+ // Resolve clamp() via the actual header rather than parsing CSS source.
+ const step=panels[0]?.querySelector('.keyword').getBoundingClientRect().height||rail;
+ panels.forEach((panel,i)=>{
+  panel.style.height=Math.max(0,height-i*step)+'px';
+  panel.style.transform='translateY('+(i<=active?i*step:height+(i-active)*step)+'px)';
+  panel.style.zIndex=i;
+  panel.inert=i>active;panel.setAttribute('aria-hidden',String(i>active));
+  const body=panel.querySelector('.panel-body');body.inert=i!==active;body.setAttribute('aria-hidden',String(i!==active));
+  panel.querySelector('button').setAttribute('aria-expanded',String(i===active));
+ });
+ prev.disabled=active===0;next.disabled=active===panels.length-1;
+}
+function renderStack(){
+ stage.replaceChildren();panels=[];
+ templates[mode].forEach((point,i)=>{
+  const panel=document.createElement('article');panel.className='panel';
+  const roles=[['--surface','--text'],['--primarySoft','--text'],['--primary','--onPrimary']][i%3];
+  panel.style.background='var('+roles[0]+')';panel.style.color='var('+roles[1]+')';
+  const button=document.createElement('button');button.className='keyword';button.id=mode+'-'+point.id+'-header';button.setAttribute('aria-controls',mode+'-'+point.id+'-body');
+  const label=document.createElement('span');label.textContent=point.keyword;
+  const count=document.createElement('small');count.textContent=String(i+1).padStart(2,'0');button.append(label,count);button.addEventListener('click',()=>setPanel(i));
+  const body=document.createElement('div');body.className='panel-body';body.id=mode+'-'+point.id+'-body';body.setAttribute('role','region');body.setAttribute('aria-labelledby',button.id);
+  const copy=document.createElement('div');copy.className='copy';
+  for(const [tag,text,cls]of[['h2',point.title,''],['p',point.body,''],['p',point.detail,'detail']]){const el=document.createElement(tag);el.textContent=text;el.className=cls;copy.append(el)}
+  const visual=document.createElement('div');visual.className='visual';visual.innerHTML=svgVisual(point.visual);body.append(copy,visual);panel.append(button,body);stage.append(panel);panels.push(panel);
+ });
+ layout();
+}
+function diagram(kind){
+ const flow=kind==='flow',prefix='gallery-'+kind;
+ const title=flow?'From question to decision.':'One source. Two ways to use it.';
+ const description=flow?'Discover the need, shape a prototype, and learn from the evidence.':'The editor updates a shared deck model used by both the preview and the portable export.';
+ // Original geometry: named nodes, no external images or copied reference assets.
+ const defs='<defs><marker id="'+prefix+'-arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" class="arrow"/></marker></defs>';
+ const line=(d)=>'<path d="'+d+'" class="connector" marker-end="url(#'+prefix+'-arrow)"/>';
+ const node=(x,y,w,label,sub,focal=false)=>'<g><rect x="'+x+'" y="'+y+'" width="'+w+'" height="100" rx="8" class="node '+(focal?'focal':'')+'"/><text x="'+(x+w/2)+'" y="'+(y+43)+'" text-anchor="middle" class="label '+(focal?'on':'')+'">'+label+'</text><text x="'+(x+w/2)+'" y="'+(y+70)+'" text-anchor="middle" class="sub '+(focal?'on':'')+'">'+sub+'</text></g>';
+ let graph,items;
+ if(flow){graph=line('M234 150H320')+line('M544 150H630')+node(10,100,224,'Discover','Focused brief')+node(320,100,224,'Shape','Testable direction',true)+node(630,100,224,'Learn','Next decision');items=[['Discover','Clarify the need → focused brief'],['Shape','Prototype the idea → testable direction'],['Learn','Use evidence → next decision']];}
+ else{graph=line('M210 150H300')+line('M510 130H552Q560 130 560 122V78Q560 70 568 70H640')+line('M510 170H552Q560 170 560 178V222Q560 230 568 230H640')+node(10,100,200,'Editor','Changes content')+node(300,100,210,'Deck model','Shared source',true)+node(640,20,214,'Preview','Presents live')+node(640,180,214,'Export','Portable copy');items=[['Editor','Updates the shared deck model'],['Deck model','Feeds both outputs from the same source'],['Preview + Export','Live presentation and portable copy']];}
+ const page=document.createElement('div');page.className='diagram-page';
+ page.innerHTML='<div class="eyebrow">'+(flow?'Process':'Architecture')+'</div><h2>'+title+'</h2><p>'+description+'</p><svg class="diagram-wide" viewBox="0 0 864 300" role="img" aria-labelledby="'+prefix+'-title '+prefix+'-desc"><title id="'+prefix+'-title">'+title+'</title><desc id="'+prefix+'-desc">'+description+'</desc>'+defs+graph+'</svg><ol class="diagram-mobile">'+items.map(([name,detail])=>'<li>'+name+'<small>'+detail+'</small></li>').join('')+'</ol>';
+ stage.replaceChildren(page);panels=[];prev.disabled=true;next.disabled=true;replay.disabled=true;
+}
+function render(){resetGesture();active=0;replay.disabled=false;if(templates[mode])renderStack();else diagram(mode);status.textContent=document.querySelector('#example').selectedOptions[0].textContent}
+// Embedding contract: return false at a boundary so a parent can change slides.
+function advance(delta){if(!panels.length)return false;const target=active+delta;if(target<0||target>=panels.length)return false;setPanel(target);return true}
+prev.addEventListener('click',()=>advance(-1));next.addEventListener('click',()=>advance(1));replay.addEventListener('click',()=>{resetGesture();setPanel(0)});
+document.querySelector('#example').addEventListener('change',event=>{mode=event.target.value;render()});
+document.addEventListener('keydown',event=>{
+ if(event.defaultPrevented||event.altKey||event.ctrlKey||event.metaKey||event.target.closest('input,select,textarea,button,[contenteditable="true"],[role="dialog"]'))return;
+ const delta=['ArrowRight','ArrowDown',' '].includes(event.key)?1:['ArrowLeft','ArrowUp'].includes(event.key)?-1:0;
+ if(delta&&advance(delta))event.preventDefault();
+});
+stage.addEventListener('wheel',event=>{
+ if(!document.querySelector('#wheel').checked||!panels.length||event.ctrlKey||event.metaKey||Math.abs(event.deltaX)>Math.abs(event.deltaY)||event.target.closest('input,select,textarea,button,[contenteditable="true"]'))return;
+ const delta=event.deltaY*(event.deltaMode===1?16:event.deltaMode===2?stage.clientHeight:1);
+ const direction=Math.sign(delta);if(!direction)return;
+ clearTimeout(gestureTimer);gestureTimer=setTimeout(resetGesture,500);
+ if(gestureUsed){event.preventDefault();return;}
+ if((active===0&&direction<0)||(active===panels.length-1&&direction>0))return;
+ event.preventDefault();
+ if(Math.sign(gestureTotal)!==direction)gestureTotal=0;
+ gestureTotal+=delta;
+ if(Math.abs(gestureTotal)>=70){gestureUsed=advance(direction);gestureTotal=0;}
+},{passive:false});
+stage.addEventListener('pointerleave',resetGesture);document.querySelector('#wheel').addEventListener('change',resetGesture);
+new ResizeObserver(()=>{if(panels.length)layout()}).observe(stage);
+document.addEventListener('visibilitychange',resetGesture);window.addEventListener('pagehide',resetGesture);
+// Compact sRGB demo palette. A deck may instead inject its approved role values.
+function rgb(hex){return hex.match(/[a-f\d]{2}/gi).map(x=>parseInt(x,16))}
+function hex(channels){return '#'+channels.map(x=>Math.round(x).toString(16).padStart(2,'0')).join('')}
+function mix(a,b,t){const ca=rgb(a),cb=rgb(b);return hex(ca.map((v,i)=>v+(cb[i]-v)*t))}
+function luminance(color){const c=rgb(color).map(x=>{x/=255;return x<=.04045?x/12.92:((x+.055)/1.055)**2.4});return c[0]*.2126+c[1]*.7152+c[2]*.0722}
+function contrast(a,b){const x=luminance(a),y=luminance(b);return (Math.max(x,y)+.05)/(Math.min(x,y)+.05)}
+function applyTheme(seed){
+ const tokens={primary:seed,onPrimary:contrast(seed,'#ffffff')>=contrast(seed,'#000000')?'#ffffff':'#000000',primarySoft:mix(seed,'#ffffff',.88),background:mix(seed,'#ffffff',.97),surface:'#ffffff',text:'#19181c',textMuted:'#55525b',border:mix(seed,'#ffffff',.75),controlBorder:'#55525b'};
+ let strong=seed;
+ for(let i=0;i<=100;i++){strong=mix(seed,'#19181c',i/100);if(contrast(strong,tokens.background)>=4.5&&contrast(strong,tokens.primarySoft)>=4.5)break}
+ tokens.primaryText=strong;tokens.focus=strong;
+ for(const [role,value]of Object.entries(tokens))document.documentElement.style.setProperty('--'+role,value);
+ document.querySelector('#color-note').textContent='Theme updated · text on primary '+contrast(seed,tokens.onPrimary).toFixed(2)+':1. All five examples share these tokens.';
+}
+document.querySelector('#seed').addEventListener('input',event=>{const value=event.target.value.trim();const valid=/^#[a-f\d]{6}$/i.test(value);event.target.setAttribute('aria-invalid',String(!valid));if(valid)applyTheme(value);else document.querySelector('#color-note').textContent='Enter a six-digit hex color, such as #6750A4.'});
+applyTheme(document.querySelector('#seed').value);render();
+</script>
+</html>

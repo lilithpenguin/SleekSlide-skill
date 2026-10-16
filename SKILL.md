@@ -35,6 +35,8 @@ Use CSS transitions or the Web Animations API for simple fades, hover states, an
 
 Drive motion from entering or advancing a slide. ScrollTrigger is optional for an explicitly requested scrolling story; long pinned scroll sequences are a poor default for a one-screen slide deck. Lottie is optional for a supplied or purpose-built illustration, not a dependency for normal text, counters, charts, or navigation. Read [interaction patterns](references/interaction-patterns.md) when choosing effects or adapting the reference sites.
 
+For upward covering panels with persistent keyword headers, read [stacked panels](references/stacked-panels.md). For diagrams inside slides, read [diagram guidance](references/diagrams.md). Load only the reference needed for the chosen slide. The runnable [pattern gallery](assets/pattern-gallery.html) is optional: inspect the relevant implementation only when useful, rather than loading it for every deck. Examples inherit the deck's color and font tokens.
+
 Use applicable installed presentation and website/hosting skills for their specialized workflows when relevant. Honor the requested local-file, existing-website, or hosted destination. This skill does not itself authorize publishing, changing access, or sending material to an external service.
 
 ## Screen and navigation contract

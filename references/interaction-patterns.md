@@ -17,6 +17,7 @@ Treat these as dated implementation observations. Hashed asset URLs can change; 
 | --- | --- | --- |
 | Contents/sidebar progress | Semantic links/buttons, a single active-slide state, CSS transition | Generate labels and order from the content model |
 | Slide or section entrance | CSS/Web Animations for a simple move/fade; GSAP for coordinated sequences | Apply to a container so text edits do not break timing |
+| Upward covering panels with keyword headers | Bounded panel state and CSS transforms; see [stacked panels](stacked-panels.md) | Keep stable point IDs, keyword, body, and visual as data; reuse the deck controls |
 | Count-up metric | A numeric state interpolated by GSAP or a small requestAnimationFrame loop | Keep target, units, precision, and timing as separate fields |
 | Chart or process reveal | Native SVG/HTML with data-driven drawing and short transitions | Keep the evidence and labels editable |
 | Product slider/toggle | Native range input or button updating a bounded state model | Expose presets/default values; label illustrative outcomes |
@@ -27,6 +28,8 @@ Treat these as dated implementation observations. Hashed asset URLs can change; 
 | Looping product illustration | Lottie with an appropriate supplied/authored asset | Easy to integrate, potentially costly to redesign; keep primary metrics separate |
 
 Default to HTML/CSS/JavaScript plus GSAP core when rich sequencing warrants it. Tailwind is a styling option, not an interaction engine. Preserve it when already in the project rather than adding it solely to match a reference's stack.
+
+The optional [pattern gallery](../assets/pattern-gallery.html) contains three covering-panel variants and two theme-aware SVG examples. Inspect only the relevant implementation when needed. Read [diagram guidance](diagrams.md) when a slide benefits from a process or relationship diagram. Adapt content and tokens; the gallery is a component reference, not a complete deck editor.
 
 ## Numeric changes
 

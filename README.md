@@ -48,6 +48,14 @@ The plan includes palette roles, actual color values, and a type hierarchy with 
 
 > Use $sleekslide to create a product deck with #6750A4 as the primary color. Generate a restrained analogous palette and a clear type hierarchy. Include the theme specification in the slide plan before building.
 
+## Interaction and diagram examples
+
+Open [the pattern gallery](assets/pattern-gallery.html) in a browser. It includes three upward covering-panel templates—features, process, and design principles—and two inline SVG diagram examples. Scroll over the panel body, use the controls, or revisit an earlier keyword header. Change the primary color to see all examples update together.
+
+> Use $sleekslide with stacked feature panels that slide up over each other, keeping earlier keywords visible. Add a process diagram using my deck's theme colors and typography.
+
+The diagram guidance references [Cathryn Lavery's Diagram Design](https://github.com/cathrynlavery/diagram-design). The bundled examples are original and inherit the deck theme; they do not require installing that skill or adopting its default palette.
+
 ## Editing and sharing
 
 Generated decks can include an editor for changing content and downloading an updated copy. A browser draft stays in that browser; publishing changes to a hosted deck requires a supported hosting workflow.
@@ -63,5 +71,8 @@ This repository contains reusable authoring instructions and supporting referenc
 - [SKILL.md](SKILL.md): planning, authoring, editing, and validation guidance.
 - [Interaction patterns](references/interaction-patterns.md): adaptable effects and implementation choices.
 - [Design system guidance](references/design-system.md): palette generation, contrast checks, and type hierarchy.
+- [Stacked panels](references/stacked-panels.md): upward reveals with persistent keyword headers.
+- [Diagram guidance](references/diagrams.md): themed SVG diagrams for slides.
+- [Pattern gallery](assets/pattern-gallery.html): three panel templates and two diagram examples.
 - [Editing and sharing](references/editing-and-sharing.md): persistence, export, and access controls.
 - [Codex interface metadata](agents/openai.yaml): display name and example invocation.
